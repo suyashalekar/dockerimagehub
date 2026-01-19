@@ -37,6 +37,9 @@ jobs:
     - name: Checkout code 
       uses: actions/checkout@v3 
     
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2 # 🗣️ The "Translator" step
+    
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
     
@@ -51,6 +54,7 @@ jobs:
       with: 
         context: .
         file: ./Dockerfile
+        platforms: linux/amd64,linux/arm64 # 🌍 Cloud + M3 Mac
         push: true 
         tags: ${{ secrets.DOCKER_USERNAME }}/flasktest-app:latest
    
