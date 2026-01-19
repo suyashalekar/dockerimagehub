@@ -54,6 +54,6 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/flasktest-app:latest
    
     - name: Image digest 
-      run: echo ${{ steps.build-and-published.output.digest}}
+      run: echo ${{ steps.build-and-published.outputs.digest}}
 
 
